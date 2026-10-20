@@ -42,6 +42,14 @@ export default function App() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false); // Default to false, handle via auth state
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const refCode = params.get('ref');
+    if (refCode) {
+      sessionStorage.setItem('referralCode', refCode);
+    }
+  }, []);
+
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setIsAuthModalOpen(false);

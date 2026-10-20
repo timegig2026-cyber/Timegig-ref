@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, db } from '../firebase';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, collection, addDoc } from 'firebase/firestore';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -46,6 +46,21 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onAuthSuc
           createdAt: new Date().toISOString(),
           role: 'user',
         });
+
+        // Referral logic
+        const refCode = sessionStorage.getItem('referralCode');
+        if (refCode) {
+          await addDoc(collection(db, 'referrals'), {
+            userId: refCode,
+            referredUserId: userCredential.user.uid,
+            name: 'New User',
+            email: userCredential.user.email,
+            status: 'pending',
+            submittedDate: new Date().toLocaleDateString(),
+            subType: 'User Subscription (R29.99/mo)',
+          });
+          sessionStorage.removeItem('referralCode');
+        }
       }
       onAuthSuccess();
       onClose();

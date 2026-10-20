@@ -192,7 +192,7 @@ export const TenantPortalModal: React.FC<TenantPortalModalProps> = ({
 
   if (!isOpen) return null;
 
-  const tenantReferralLink = 'https://timegig.app/join/tenant-TN8841X';
+  const tenantReferralLink = `https://timegig.app/?ref=${auth.currentUser?.uid || 'unknown'}`;
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(tenantReferralLink);
