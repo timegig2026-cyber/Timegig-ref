@@ -1,0 +1,6 @@
+{
+  "name": "GiGs Map & Location Explorer",
+  "description": "Fullscreen OpenStreetMap template displaying real-time device geolocation, custom gig discovery pins, and interactive GiGs bottom navigation.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

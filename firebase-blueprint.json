@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Represents a user in the system.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["user", "tenant", "admin"] },
+        "isVerified": { "type": "boolean" }
+      },
+      "required": ["uid", "email"]
+    },
+    "Referral": {
+      "title": "Referral",
+      "description": "Represents a user referral.",
+      "type": "object",
+      "properties": {
+        "referredBy": { "type": "string" },
+        "referredUser": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["referredBy", "referredUser", "status"]
+    },
+    "ProofOfPayment": {
+      "title": "ProofOfPayment",
+      "description": "Represents a proof of payment.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "type": { "type": "string", "enum": ["tenant_subscription", "user_subscription"] },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "type", "amount", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "User",
+      "description": "User documents."
+    },
+    "/referrals/{referralId}": {
+      "schema": "Referral",
+      "description": "Referral documents."
+    },
+    "/proofsOfPayment/{popId}": {
+      "schema": "ProofOfPayment",
+      "description": "Proof of payment documents."
+    }
+  }
+}
