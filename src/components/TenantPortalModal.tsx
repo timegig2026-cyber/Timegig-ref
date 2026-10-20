@@ -254,7 +254,7 @@ export const TenantPortalModal: React.FC<TenantPortalModalProps> = ({
       </button>
 
       {/* Main Content Area */}
-      <main className={`flex-1 ${activeTab === 'overview' ? 'overflow-hidden flex flex-col justify-between p-3 sm:p-5 max-w-4xl mx-auto w-full pb-20' : 'overflow-y-auto px-4 sm:px-6 pt-5 pb-24 max-w-4xl mx-auto w-full space-y-4'}`}>
+      <main className={`flex-1 ${activeTab === 'overview' ? 'overflow-y-auto p-3 sm:p-5 max-w-4xl mx-auto w-full pb-20' : 'overflow-y-auto px-4 sm:px-6 pt-5 pb-24 max-w-4xl mx-auto w-full space-y-4'}`}>
 
         {/* ========================================================
             TAB 1: OVERVIEW (COMPACT, NO SCROLLING UP AND DOWN)
@@ -266,7 +266,7 @@ export const TenantPortalModal: React.FC<TenantPortalModalProps> = ({
             + Tenant Referral Link
         ======================================================== */}
         {activeTab === 'overview' && (
-          <div className="h-full flex flex-col justify-between space-y-2.5 animate-fade-in">
+          <div className="flex flex-col space-y-4 animate-fade-in">
             {/* Header (Compact) */}
             <div className="flex items-center justify-between shrink-0">
               <div>
