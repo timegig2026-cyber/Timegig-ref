@@ -32,6 +32,8 @@ export default function App() {
     trades: [],
     socialLinks: [],
     isLocked: false,
+    subscriptionStatus: 'inactive',
+    subscriptionExpiry: '',
   });
 
   const [isGigsModalOpen, setIsGigsModalOpen] = useState(false);
@@ -66,6 +68,8 @@ export default function App() {
             trades: data.trades || [],
             socialLinks: data.socialLinks || [],
             isLocked: data.isLocked || false,
+            subscriptionStatus: data.subscriptionStatus || 'inactive',
+            subscriptionExpiry: data.subscriptionExpiry || '',
           });
         }
       } else {

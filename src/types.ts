@@ -77,6 +77,8 @@ export interface UserProfileData {
   trades: string[];
   socialLinks: SocialLink[];
   isLocked: boolean;
+  subscriptionStatus?: 'active' | 'overdue' | 'inactive';
+  subscriptionExpiry?: string;
 }
 
 export type NavigationTab = 'map' | 'saved' | 'gigs' | 'messages' | 'profile';

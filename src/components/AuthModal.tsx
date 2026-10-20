@@ -43,13 +43,15 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onAuthSuc
           trades: [],
           socialLinks: [],
           isLocked: false,
+          subscriptionStatus: 'inactive',
+          subscriptionExpiry: '',
           createdAt: new Date().toISOString(),
           role: 'user',
         });
 
         // Referral logic
         const refCode = sessionStorage.getItem('referralCode');
-        if (refCode) {
+        if (refCode && refCode !== userCredential.user.uid) {
           await addDoc(collection(db, 'referrals'), {
             userId: refCode,
             referredUserId: userCredential.user.uid,
